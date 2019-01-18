@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/big"
 	"strings"
 )
 
@@ -107,7 +108,10 @@ func main() {
 20849603980134001723930671666823555245252804609722
 53503534226472524250874054075591789781264330331690`
 	arr := strings.Split(input, "\n")
+	sum := big.NewInt(0)
 	for _, x := range arr {
-		fmt.Println(x)
+		n, _ := new(big.Int).SetString(x, 0)
+		sum.Add(sum, n)
 	}
+	fmt.Println(sum.String()[0:10])
 }
